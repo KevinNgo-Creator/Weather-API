@@ -1,0 +1,38 @@
+#myHeader {
+    background-color: teal;
+    width: 100%;
+    font-size: 40px;
+    color: black;
+    text-align: center;
+}
+.searchBar {
+    width: 200px;
+}
+.col-md-9 {
+    float: right;
+    position: absolute;
+    top: -50px;
+    margin: 50px 0px 0px 0px;
+}
+body {
+    overflow: initial;
+}
+.list-group-item {
+    float: left;
+}
+.col-md-3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+h1{
+    padding: 40px 0px;
+}
+h2{
+    font-size: 30px;
+}
+.col-md-3{
+    height: 430px;
+}
+.card-body{
+    height: 429px;
+}
