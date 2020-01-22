@@ -23,8 +23,7 @@ $(document).ready(function(){
                     $("#fourthDay").html(widget5);
                     var widget6 = show5(data);
                     $("#fifthDay").html(widget6);
-                    $("#city").val(''); 
-
+                    $("#city").val('');    
                 }
             })
         } else{
@@ -34,7 +33,7 @@ $(document).ready(function(){
 
     function show(data){
         return  "<h1 class='text center'>Current Weather for "+ data.city.name +", " + data.city.country + "</h1>" + 
-                "<h2>Weather: " +data.list[0].weather.main + "</h2>" +
+                "<h2>Weather: " +data.list[0].weather[0].main + "</h2>" +
                 "<h2>Description: <img src='http://openweathermap.org/img/wn/"+ data.list[0].weather[0].icon +".png'>" + data.list[0].weather[0].description + "</h2>" +
                 "<h2>Temperature: "+ data.list[0].main.temp + "&deg;F</h2>" +
                 "<h2>Wind Speed: "+ data.list[0].wind.speed + " m/s</h2>" +
@@ -80,3 +79,15 @@ $(document).ready(function(){
     };
 
 });
+
+function recentCity(){
+    var city = $("#city").val();
+    var url = forecasturl + city + "&units=imperial" + "&APPID=15e8e9167d970f296eb474a29ada33f5"
+    var r=$('<input/>').attr({
+            type: "button",
+            value: city,
+            id: city,
+            href: url
+    })
+        $("#recentCity").append(r);
+}
