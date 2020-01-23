@@ -10,7 +10,6 @@ $(document).ready(function(){
 
 $(document).on("click",".button", function(){
     var recent = $(this).attr("id")
-    console.log(recent)
         search(recent)
     })
 
