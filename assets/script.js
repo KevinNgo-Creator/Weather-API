@@ -5,31 +5,37 @@ var forecasturl = "http://api.openweathermap.org/data/2.5/forecast?q=";
 $(document).ready(function(){
     $('#submitWeather').click(function(){
         var city = $("#city").val();
-        if(city !=''){
-            $.ajax({
-                url: forecasturl + city + "&units=imperial" + "&APPID=15e8e9167d970f296eb474a29ada33f5",
-                type: "GET",
-                dataType: "jsonp",
-                success: function(data){
-                    var widget1 = show(data);
-                    $("#showToday").html(widget1);
-                    var widget2 = show1(data);
-                    $("#firstDay").html(widget2);
-                    var widget3 = show2(data);
-                    $("#secondDay").html(widget3);
-                    var widget4 = show3(data);
-                    $("#thirdDay").html(widget4);
-                    var widget5 = show4(data);
-                    $("#fourthDay").html(widget5);
-                    var widget6 = show5(data);
-                    $("#fifthDay").html(widget6);
-                    $("#city").val('');    
-                }
-            })
-        } else{
-            $("#error").html("   Field can not be empty");
-        }
+           search(city)
     })
+
+$(document).on("click",".button", function(){
+    var recent = $(this).attr("id")
+    console.log(recent)
+        search(recent)
+    })
+
+    function search(data){
+        $.ajax({
+            url: forecasturl + data + "&units=imperial" + "&APPID=15e8e9167d970f296eb474a29ada33f5",
+            type: "GET",
+            dataType: "jsonp",
+            success: function(data){
+                var widget1 = show(data);
+                $("#showToday").html(widget1);
+                var widget2 = show1(data);
+                $("#firstDay").html(widget2);
+                var widget3 = show2(data);
+                $("#secondDay").html(widget3);
+                var widget4 = show3(data);
+                $("#thirdDay").html(widget4);
+                var widget5 = show4(data);
+                $("#fourthDay").html(widget5);
+                var widget6 = show5(data);
+                $("#fifthDay").html(widget6);
+                $("#city").val('');    
+            }
+        })
+    }
 
     function show(data){
         return  "<h1 class='text center'>Current Weather for "+ data.city.name +", " + data.city.country + "</h1>" + 
@@ -80,6 +86,7 @@ $(document).ready(function(){
 
 });
 
+
 function recentCity(){
     var city = $("#city").val();
     var url = forecasturl + city + "&units=imperial" + "&APPID=15e8e9167d970f296eb474a29ada33f5"
@@ -87,7 +94,8 @@ function recentCity(){
             type: "button",
             value: city,
             id: city,
-            href: url
+            class: "button",
+            href: url,
     })
         $("#recentCity").append(r);
 }
